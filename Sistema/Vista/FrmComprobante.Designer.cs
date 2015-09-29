@@ -39,7 +39,7 @@
             this.DGVComprobantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVComprobantes.Location = new System.Drawing.Point(12, 12);
             this.DGVComprobantes.Name = "DGVComprobantes";
-            this.DGVComprobantes.Size = new System.Drawing.Size(716, 275);
+            this.DGVComprobantes.Size = new System.Drawing.Size(621, 275);
             this.DGVComprobantes.TabIndex = 3;
             this.DGVComprobantes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVComprobantes_CellClick);
             this.DGVComprobantes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVComprobantes_CellContentClick);
@@ -49,10 +49,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 312);
+            this.ClientSize = new System.Drawing.Size(648, 354);
             this.Controls.Add(this.DGVComprobantes);
             this.Name = "FrmComprobante";
-            this.Text = "FrmComprobante";
+            this.Text = "Comprobantes Fiscales (DGII)";
             this.Load += new System.EventHandler(this.FrmComprobante_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVComprobantes)).EndInit();
             this.ResumeLayout(false);

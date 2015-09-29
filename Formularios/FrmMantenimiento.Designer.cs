@@ -44,9 +44,9 @@
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
-            this.btnSalir.Location = new System.Drawing.Point(330, 272);
+            this.btnSalir.Location = new System.Drawing.Point(317, 249);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(56, 33);
+            this.btnSalir.Size = new System.Drawing.Size(75, 56);
             this.btnSalir.TabIndex = 15;
             this.TpMessage.SetToolTip(this.btnSalir, "Salir de la Ventana");
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -56,7 +56,7 @@
             // 
             this.btnBorrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBorrar.Image = ((System.Drawing.Image)(resources.GetObject("btnBorrar.Image")));
-            this.btnBorrar.Location = new System.Drawing.Point(173, 249);
+            this.btnBorrar.Location = new System.Drawing.Point(172, 249);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(75, 56);
             this.btnBorrar.TabIndex = 13;
@@ -79,7 +79,7 @@
             this.btnNuevo_Guardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNuevo_Guardar.Location = new System.Drawing.Point(12, 249);
             this.btnNuevo_Guardar.Name = "btnNuevo_Guardar";
-            this.btnNuevo_Guardar.Size = new System.Drawing.Size(74, 56);
+            this.btnNuevo_Guardar.Size = new System.Drawing.Size(75, 56);
             this.btnNuevo_Guardar.TabIndex = 11;
             this.btnNuevo_Guardar.UseVisualStyleBackColor = true;
             this.btnNuevo_Guardar.Click += new System.EventHandler(this.btnNuevo_Guardar_Click);
@@ -89,7 +89,7 @@
             this.chkEstado.AutoSize = true;
             this.chkEstado.Checked = true;
             this.chkEstado.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkEstado.Location = new System.Drawing.Point(330, 249);
+            this.chkEstado.Location = new System.Drawing.Point(333, 12);
             this.chkEstado.Name = "chkEstado";
             this.chkEstado.Size = new System.Drawing.Size(59, 17);
             this.chkEstado.TabIndex = 16;

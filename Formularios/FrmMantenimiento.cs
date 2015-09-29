@@ -1,4 +1,5 @@
-﻿using   System;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Formularios
@@ -13,18 +14,11 @@ namespace Formularios
     public partial class FrmMantenimiento : Form
     {
 
-        public FrmMantenimiento()
-        {
-            InitializeComponent();
-            Encontrado = false;
-            Modalidad = "VIEW";
-        }
-        private void FrmMantenimiento_Load(object sender, EventArgs e)
-        {
-            this.Modalidad = "VIEW";
-        }
+        #region Propiedades y variables
 
-        #region Propiedades
+        private bool Empty = true;
+        private bool Validate = false;
+        private bool Bstatus = true;
 
         private string modalidad = "VIEW";
         public string Modalidad
@@ -37,12 +31,15 @@ namespace Formularios
                 {
                     //btnNuevo_Guardar.Text = "&Nuevo";
                     TpMessage.SetToolTip(btnNuevo_Guardar, "Nuevo Registro");
-                //    btnNuevo_Guardar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Add.png");
+                    btnNuevo_Guardar.Image = Image.FromFile(Environment.CurrentDirectory + "\\Resources\\Icons Crud\\Add.png");
 
+                    //    btnNuevo_Guardar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Add.png");
                     //  btnNuevo_Guardar.TextImageRelation = TextImageRelation.ImageBeforeText;
+
                     // btnEditar_Cancelar.Text = "&Editar";
                     TpMessage.SetToolTip(btnEditar_Cancelar, "Editar Registro");
-                 //   btnEditar_Cancelar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Edit.png");
+                    btnEditar_Cancelar.Image = Image.FromFile(Environment.CurrentDirectory + "\\Resources\\Icons Crud\\Edit.png");
+                    //   btnEditar_Cancelar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Edit.png");
 
                     btnEditar_Cancelar.Enabled = Encontrado;
                     btnBorrar.Enabled = Encontrado;
@@ -53,10 +50,13 @@ namespace Formularios
                 {
                     // btnNuevo_Guardar.Text = "&Guardar";
                     TpMessage.SetToolTip(btnNuevo_Guardar, "Guardar Registro");
-                //    btnNuevo_Guardar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Save.png");
+                    btnNuevo_Guardar.Image = Image.FromFile(Environment.CurrentDirectory + "\\Resources\\Icons Crud\\Save.png");
+
+                    //    btnNuevo_Guardar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Save.png");
                     // btnEditar_Cancelar.Text = "&Cancelar";
                     TpMessage.SetToolTip(btnEditar_Cancelar, "Cancelar Registro");
-                 //   btnEditar_Cancelar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\cancel.png");
+                    btnEditar_Cancelar.Image = Image.FromFile(Environment.CurrentDirectory + "\\Resources\\Icons Crud\\cancel.png");
+                    //   btnEditar_Cancelar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\cancel.png");
                     // btnNuevo_Guardar.TextImageRelation = TextImageRelation.ImageBeforeText;
                     btnEditar_Cancelar.Enabled = true;
                     btnBorrar.Enabled = false;
@@ -82,7 +82,22 @@ namespace Formularios
 
         #endregion
 
-        #region Metodos
+        #region Constructores y Loader
+
+        public FrmMantenimiento()
+        {
+            InitializeComponent();
+            Encontrado = false;
+            Modalidad = "VIEW";
+        }
+        private void FrmMantenimiento_Load(object sender, EventArgs e)
+        {
+            this.Modalidad = "VIEW";
+        }
+
+        #endregion
+
+        #region Metodos y funciones 
         private void EnableControls(Control con)
         {
             foreach (Control c in con.Controls)
@@ -219,9 +234,8 @@ namespace Formularios
 
         #endregion
 
-        #region Validacion
-
-        private bool Bstatus = true;
+        #region Validaciones
+             
         public bool isValidateEmpty(Control Atxt, String Txt)
         {
             Bstatus = true;
@@ -237,7 +251,8 @@ namespace Formularios
             }
             return Bstatus;
         }
-        private bool Empty = true;
+
+     
         // Solo Para TextBox
         public bool isControlEmpty(Control con)
         {
@@ -247,7 +262,8 @@ namespace Formularios
                 Empty = false;
             return Empty;
         }
-        bool Validate = false;
+
+        
         public bool isValidateRNC(Control con,String txt) 
         {
         string rnc = con.Text;

@@ -17,7 +17,7 @@ namespace Formularios
         #region Propiedades y variables
 
         private bool Empty = true;
-        private bool Validate = false;
+        private bool Validado = false;
         private bool Bstatus = true;
 
         private string modalidad = "VIEW";
@@ -272,7 +272,7 @@ namespace Formularios
         int division = 0;
         if (rnc.Length != 9){
             EpError.SetError(con,txt);
-            return Validate;
+            return Validado;
         }
         else
         {
@@ -280,7 +280,7 @@ namespace Formularios
                 //para verificar si es un dígito o no
                 if (Char.IsDigit(rnc[i]) != true){
                     EpError.SetError(con,txt);
-                    return Validate;
+                    return Validado;
                 }
                 suma = suma + ((int.Parse(rnc[i].ToString())) * (int.Parse(peso[i].ToString())));
             }
@@ -296,10 +296,10 @@ namespace Formularios
                 digito = 11 - resto;
             
             if (digito != int.Parse(rnc[8].ToString()))
-                return Validate;            
+                return Validado;            
         }    
-            Validate = true;
-        return Validate;
+            Validado = true;
+        return Validado;
     }
 
         public bool isValidateRNC1(Control con) 

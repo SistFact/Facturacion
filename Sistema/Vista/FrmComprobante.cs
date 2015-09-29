@@ -83,7 +83,8 @@ using Sistema.Data;namespace Sistema.Vista
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Unable to save the record. There might be a blank cell. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            
+                        MessageBox.Show("Unable to save the record. There might be a blank cell. \n"+ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

@@ -51,6 +51,7 @@
             // 
             // btnSalir
             // 
+            this.btnSalir.ForeColor = System.Drawing.Color.Red;
             this.btnSalir.Image = global::Sistema.Properties.Resources.Exit;
             this.btnSalir.Location = new System.Drawing.Point(558, 293);
             this.btnSalir.Name = "btnSalir";

@@ -47,8 +47,8 @@ namespace Sistema.Vista
 
         #region Property with fields
 
-        private double _Prop_ITBIS;
-        private double _Prop_Total;
+        //private double _Prop_ITBIS;
+        //private double _Prop_Total;
         
         /// <summary>
         ///  Calculos totales fila

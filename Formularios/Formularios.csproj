@@ -77,6 +77,9 @@
     <Content Include="Resources\Icons Crud\Accept.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Icons Crud\saveicon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Icons Crud\Add.png">
@@ -94,6 +97,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Icons Crud\delicon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Icons Crud\Edit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -109,6 +115,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Icons Crud\icoSave.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Icons Crud\news.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

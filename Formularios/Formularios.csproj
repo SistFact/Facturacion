@@ -65,27 +65,27 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Add.png">
+    <EmbeddedResource Include="Resources\Add.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Save.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Save.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\cancel.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cancel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Delete.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Delete.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Edit.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Edit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Exit.png">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Exit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\cash_register_256.ico">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\cash_register_256.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

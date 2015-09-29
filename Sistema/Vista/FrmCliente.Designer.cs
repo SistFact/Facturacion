@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCliente));
             this.panel1 = new System.Windows.Forms.Panel();
             this.TxtPrecio = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -54,7 +53,6 @@
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(257, 322);
-            this.btnSalir.Size = new System.Drawing.Size(75, 56);
             // 
             // btnBorrar
             // 
@@ -62,12 +60,10 @@
             // 
             // btnEditar_Cancelar
             // 
-            this.btnEditar_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar_Cancelar.Image")));
             this.btnEditar_Cancelar.Location = new System.Drawing.Point(92, 322);
             // 
             // btnNuevo_Guardar
             // 
-            this.btnNuevo_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo_Guardar.Image")));
             this.btnNuevo_Guardar.Location = new System.Drawing.Point(12, 322);
             // 
             // chkEstado

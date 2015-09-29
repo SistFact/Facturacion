@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProducto));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.BtnTab = new System.Windows.Forms.Button();
             this.CbCategoria = new System.Windows.Forms.ComboBox();
             this.TxtExistencia = new System.Windows.Forms.TextBox();
             this.TxtCantMin = new System.Windows.Forms.TextBox();
@@ -56,14 +56,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.BtnTab = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(320, 345);
-            this.btnSalir.Size = new System.Drawing.Size(75, 56);
             // 
             // btnBorrar
             // 
@@ -71,12 +69,10 @@
             // 
             // btnEditar_Cancelar
             // 
-            this.btnEditar_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar_Cancelar.Image")));
             this.btnEditar_Cancelar.Location = new System.Drawing.Point(124, 345);
             // 
             // btnNuevo_Guardar
             // 
-            this.btnNuevo_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo_Guardar.Image")));
             this.btnNuevo_Guardar.Location = new System.Drawing.Point(27, 345);
             // 
             // chkEstado
@@ -116,6 +112,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(459, 321);
             this.panel1.TabIndex = 17;
+            // 
+            // BtnTab
+            // 
+            this.BtnTab.Location = new System.Drawing.Point(165, 10);
+            this.BtnTab.Name = "BtnTab";
+            this.BtnTab.Size = new System.Drawing.Size(25, 23);
+            this.BtnTab.TabIndex = 28;
+            this.BtnTab.UseVisualStyleBackColor = true;
+            this.BtnTab.Click += new System.EventHandler(this.BtnTab_Click);
             // 
             // CbCategoria
             // 
@@ -329,15 +334,6 @@
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Codigo";
-            // 
-            // BtnTab
-            // 
-            this.BtnTab.Location = new System.Drawing.Point(165, 10);
-            this.BtnTab.Name = "BtnTab";
-            this.BtnTab.Size = new System.Drawing.Size(25, 23);
-            this.BtnTab.TabIndex = 28;
-            this.BtnTab.UseVisualStyleBackColor = true;
-            this.BtnTab.Click += new System.EventHandler(this.BtnTab_Click);
             // 
             // FrmProducto
             // 

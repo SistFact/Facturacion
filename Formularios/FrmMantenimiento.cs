@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Formularios
@@ -19,6 +20,8 @@ namespace Formularios
         private bool Empty = true;
         private bool Validado = false;
         private bool Bstatus = true;
+        string curdir = Path.GetDirectoryName(Application.ExecutablePath);
+        
 
         private string modalidad = "VIEW";
         public string Modalidad
@@ -31,14 +34,17 @@ namespace Formularios
                 {
                     //btnNuevo_Guardar.Text = "&Nuevo";
                     TpMessage.SetToolTip(btnNuevo_Guardar, "Nuevo Registro");
-                    btnNuevo_Guardar.Image = Image.FromFile(Environment.CurrentDirectory + "\\Resources\\Add.png");
+                    btnNuevo_Guardar.Image = Formularios.Properties.Resources.Add;
 
+                    //  btnNuevo_Guardar.Image = Image.FromFile(Path.Combine(curdir, @"\Resources\Add.png") );
+
+                    // string filename = Path.Combine(dir, @"MyImage.jpg");
                     //    btnNuevo_Guardar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Add.png");
                     //  btnNuevo_Guardar.TextImageRelation = TextImageRelation.ImageBeforeText;
 
                     // btnEditar_Cancelar.Text = "&Editar";
                     TpMessage.SetToolTip(btnEditar_Cancelar, "Editar Registro");
-                    btnEditar_Cancelar.Image = Image.FromFile(Environment.CurrentDirectory + "\\Resources\\Edit.png");
+                    btnEditar_Cancelar.Image = Formularios.Properties.Resources.Edit;
                     //   btnEditar_Cancelar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Edit.png");
 
                     btnEditar_Cancelar.Enabled = Encontrado;
@@ -50,12 +56,12 @@ namespace Formularios
                 {
                     // btnNuevo_Guardar.Text = "&Guardar";
                     TpMessage.SetToolTip(btnNuevo_Guardar, "Guardar Registro");
-                    btnNuevo_Guardar.Image = Image.FromFile(Environment.CurrentDirectory + "\\Resources\\Save.png");
+                    btnNuevo_Guardar.Image = Formularios.Properties.Resources.Save;
 
                     //    btnNuevo_Guardar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Save.png");
                     // btnEditar_Cancelar.Text = "&Cancelar";
                     TpMessage.SetToolTip(btnEditar_Cancelar, "Cancelar Registro");
-                    btnEditar_Cancelar.Image = Image.FromFile(Environment.CurrentDirectory + "\\Resources\\cancel.png");
+                    btnEditar_Cancelar.Image = Formularios.Properties.Resources.cancel;
                     //   btnEditar_Cancelar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\cancel.png");
                     // btnNuevo_Guardar.TextImageRelation = TextImageRelation.ImageBeforeText;
                     btnEditar_Cancelar.Enabled = true;

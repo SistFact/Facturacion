@@ -37,12 +37,12 @@ namespace Formularios
                 {
                     //btnNuevo_Guardar.Text = "&Nuevo";
                     TpMessage.SetToolTip(btnNuevo_Guardar, "Nuevo Registro");
-                    btnNuevo_Guardar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Add.png");
+                //    btnNuevo_Guardar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Add.png");
 
                     //  btnNuevo_Guardar.TextImageRelation = TextImageRelation.ImageBeforeText;
                     // btnEditar_Cancelar.Text = "&Editar";
                     TpMessage.SetToolTip(btnEditar_Cancelar, "Editar Registro");
-                    btnEditar_Cancelar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Edit.png");
+                 //   btnEditar_Cancelar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Edit.png");
 
                     btnEditar_Cancelar.Enabled = Encontrado;
                     btnBorrar.Enabled = Encontrado;
@@ -53,10 +53,10 @@ namespace Formularios
                 {
                     // btnNuevo_Guardar.Text = "&Guardar";
                     TpMessage.SetToolTip(btnNuevo_Guardar, "Guardar Registro");
-                    btnNuevo_Guardar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Save.png");
+                //    btnNuevo_Guardar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\Save.png");
                     // btnEditar_Cancelar.Text = "&Cancelar";
                     TpMessage.SetToolTip(btnEditar_Cancelar, "Cancelar Registro");
-                    btnEditar_Cancelar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\cancel.png");
+                 //   btnEditar_Cancelar.Image = System.Drawing.Image.FromFile(@"C:\Users\YsabelDalaly\Source\Repos\SistemaDispensario\SistemaDispensario\Imagenes\Icons Crud\cancel.png");
                     // btnNuevo_Guardar.TextImageRelation = TextImageRelation.ImageBeforeText;
                     btnEditar_Cancelar.Enabled = true;
                     btnBorrar.Enabled = false;

@@ -35,12 +35,13 @@ using Sistema.Data;namespace Sistema.Vista
             DGVComprobantes.Columns[0].ReadOnly = true;
             DGVComprobantes.Columns[1].ReadOnly = true;
             DGVComprobantes.Columns[5].ReadOnly = true;
-            
+          
             DataGridViewImageColumn delbut = new DataGridViewImageColumn();
-            delbut.Image = Image.FromFile(Environment.CurrentDirectory + "/images/icoSave.gif");
+           delbut.Image = Image.FromFile(Environment.CurrentDirectory + "/images/icoSave.gif");
             delbut.Width = 20;
             delbut.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             DGVComprobantes.Columns.Add(delbut);
+            
         }
 
         #region DataGridView

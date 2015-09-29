@@ -184,6 +184,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>FactModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="database\Facturacion.rar" />
     <None Include="Data\FactModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>FactModel.edmx</DependentUpon>
@@ -220,6 +221,7 @@
       <Name>Formularios</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

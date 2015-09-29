@@ -114,13 +114,13 @@
             this.transaccionesToolStripMenuItem.Name = "transaccionesToolStripMenuItem";
             this.transaccionesToolStripMenuItem.Size = new System.Drawing.Size(118, 25);
             this.transaccionesToolStripMenuItem.Text = "Transacciones";
-            this.transaccionesToolStripMenuItem.Click += new System.EventHandler(this.transaccionesToolStripMenuItem_Click);
             // 
             // facturaToolStripMenuItem1
             // 
             this.facturaToolStripMenuItem1.Name = "facturaToolStripMenuItem1";
             this.facturaToolStripMenuItem1.Size = new System.Drawing.Size(152, 26);
             this.facturaToolStripMenuItem1.Text = "Factura";
+            this.facturaToolStripMenuItem1.Click += new System.EventHandler(this.facturaToolStripMenuItem1_Click);
             // 
             // salirToolStripMenuItem
             // 

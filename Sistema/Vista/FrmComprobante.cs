@@ -114,7 +114,21 @@ using Sistema.Data;namespace Sistema.Vista
 
         }
 
-       
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            //Hacer un proceso que recorra el grid completo y que 
+            // Mande a actualizar a la base de datos cada una de las filas
+            // donde se hicieron cambios.
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            // Recargar todo el grid de nuevo sin guardar los cambios.
+        }
     }
 }

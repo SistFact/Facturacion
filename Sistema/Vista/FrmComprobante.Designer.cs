@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmComprobante));
             this.DGVComprobantes = new System.Windows.Forms.DataGridView();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVComprobantes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,12 +49,46 @@
             this.DGVComprobantes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVComprobantes_CellContentClick);
             this.DGVComprobantes.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DGVComprobantes_EditingControlShowing);
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::Sistema.Properties.Resources.Exit;
+            this.btnSalir.Location = new System.Drawing.Point(558, 293);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(75, 56);
+            this.btnSalir.TabIndex = 4;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Image = global::Sistema.Properties.Resources.Accept;
+            this.btnAceptar.Location = new System.Drawing.Point(12, 293);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 56);
+            this.btnAceptar.TabIndex = 5;
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Image = global::Sistema.Properties.Resources.cancel;
+            this.btnCancelar.Location = new System.Drawing.Point(93, 293);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 56);
+            this.btnCancelar.TabIndex = 6;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // FrmComprobante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 354);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.DGVComprobantes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmComprobante";
             this.Text = "Comprobantes Fiscales (DGII)";
             this.Load += new System.EventHandler(this.FrmComprobante_Load);
@@ -62,5 +100,8 @@
         #endregion
 
         private System.Windows.Forms.DataGridView DGVComprobantes;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

@@ -58,16 +58,16 @@ namespace Sistema
 
         }
 
-        private void transaccionesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void facturaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             var Frm = new FrmFactura();
             Frm.MdiParent = this;
             Frm.Show();
-        }
-
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

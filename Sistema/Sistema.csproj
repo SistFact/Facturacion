@@ -228,10 +228,16 @@
   <ItemGroup>
     <Content Include="database\FacturacionScript.sql" />
     <None Include="Resources\cash_register_256.ico" />
+    <None Include="Resources\Accept.png" />
+    <None Include="Resources\cancel.png" />
     <Content Include="Resources\delicon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Exit.png" />
     <Content Include="Resources\icoSave.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\report.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\saveicon.png">

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2b78955532824aa6bee98fe26e9b3d2f" Name="Diagram1">
+        <EntityTypeShape EntityType="FacturacionModel.CategoriaProd" Width="1.5" PointX="2.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacturacionModel.Cliente" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacturacionModel.Producto" Width="1.5" PointX="5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="FacturacionModel.Usuario" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="FacturacionModel.FK_Producto_CategoriaProd" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FacturacionModel.comprobanteTipo" Width="1.5" PointX="5.75" PointY="13.625" />
+        <EntityTypeShape EntityType="FacturacionModel.documento" Width="1.5" PointX="5.75" PointY="10.875" />
+        <EntityTypeShape EntityType="FacturacionModel.inv_movdetalle" Width="1.5" PointX="7.625" PointY="3.375" />
+        <EntityTypeShape EntityType="FacturacionModel.inv_movencabezado" Width="1.5" PointX="3.125" PointY="1.125" />
+        <AssociationConnector Association="FacturacionModel.FK_Factura_Cliente1" />
+        <AssociationConnector Association="FacturacionModel.FK_inv_movencabezado_comprobanteTipo" />
+        <AssociationConnector Association="FacturacionModel.FK_inv_movencabezado_documento" />
+        <AssociationConnector Association="FacturacionModel.FK_inv_movdetalle_inv_movencabezado1" />
+        <AssociationConnector Association="FacturacionModel.FK_inv_movdetalle_Producto" />
+        <AssociationConnector Association="FacturacionModel.FK_Factura_Usuario1" />
+        <EntityTypeShape EntityType="FacturacionModel.ViewProduct" Width="1.5" PointX="8.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,894 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FacturacionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoriaProd">
+          <Key>
+            <PropertyRef Name="CodCategoria" />
+          </Key>
+          <Property Name="CodCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="CodCliente" />
+          </Key>
+          <Property Name="CodCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RNC" Type="nvarchar" MaxLength="11" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="150" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="10" />
+          <Property Name="TelMovil" Type="nvarchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="20" />
+          <Property Name="EstadoCli" Type="bit" Nullable="false" />
+          <Property Name="TipoPrecio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="comprobanteTipo">
+          <Key>
+            <PropertyRef Name="idNCF" />
+          </Key>
+          <Property Name="idNCF" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="50" />
+          <Property Name="prefijo" Type="varchar" MaxLength="11" />
+          <Property Name="secuencia" Type="int" />
+          <Property Name="limite" Type="int" />
+          <Property Name="factura" Type="bit" />
+        </EntityType>
+        <EntityType Name="documento">
+          <Key>
+            <PropertyRef Name="tipoDocumento" />
+          </Key>
+          <Property Name="tipoDocumento" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ultimonumero" Type="int" Nullable="false" />
+          <Property Name="EfectoExistencia" Type="numeric" Precision="2" Scale="0" />
+        </EntityType>
+        <EntityType Name="inv_movdetalle">
+          <Key>
+            <PropertyRef Name="idMovimiento" />
+            <PropertyRef Name="fila" />
+          </Key>
+          <Property Name="idMovimiento" Type="int" Nullable="false" />
+          <Property Name="fila" Type="int" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="costo" Type="money" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="impuesto" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="inv_movencabezado">
+          <Key>
+            <PropertyRef Name="idMovimiento" />
+          </Key>
+          <Property Name="idMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoDocumento" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="numeroDoc" Type="int" Nullable="false" />
+          <Property Name="CodTercero" Type="int" Nullable="false" />
+          <Property Name="CodUsuario" Type="int" Nullable="false" />
+          <Property Name="rnc" Type="varchar" MaxLength="11" />
+          <Property Name="idNCF" Type="char" MaxLength="2" />
+          <Property Name="ncf" Type="varchar" MaxLength="19" />
+          <Property Name="ncfAfectado" Type="varchar" MaxLength="19" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="totalExento" Type="money" Nullable="false" />
+          <Property Name="totalGravado" Type="nchar" MaxLength="10" />
+          <Property Name="Impuesto" Type="money" Nullable="false" />
+          <Property Name="Descuento" Type="money" />
+          <Property Name="Total" Type="money" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="EfectoExistencia" Type="numeric" Precision="2" Scale="0" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoProd" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NombreProd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Precio1" Type="money" Nullable="false" />
+          <Property Name="Precio2" Type="money" />
+          <Property Name="Precio3" Type="money" />
+          <Property Name="EstadoProd" Type="bit" Nullable="false" />
+          <Property Name="ExistenciaProd" Type="int" />
+          <Property Name="CodCategoria" Type="int" Nullable="false" />
+          <Property Name="UnidadProd" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CantidadMin" Type="int" Nullable="false" />
+          <Property Name="Impuesto" Type="decimal" Precision="5" Scale="4" />
+          <Property Name="CostoProd" Type="money" />
+          <Property Name="Nota" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="CodUsuario" />
+          </Key>
+          <Property Name="CodUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Administrador" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Facturacion.dbo.ViewProduct' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewProduct">
+          <Key>
+            <PropertyRef Name="CodigoProd" />
+            <PropertyRef Name="NombreProd" />
+            <PropertyRef Name="Precio1" />
+            <PropertyRef Name="EstadoProd" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="UnidadProd" />
+            <PropertyRef Name="CantidadMin" />
+          </Key>
+          <Property Name="CodigoProd" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NombreProd" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Precio1" Type="money" Nullable="false" />
+          <Property Name="Precio2" Type="money" />
+          <Property Name="Precio3" Type="money" />
+          <Property Name="EstadoProd" Type="bit" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExistenciaProd" Type="int" />
+          <Property Name="UnidadProd" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CantidadMin" Type="int" Nullable="false" />
+          <Property Name="Impuesto" Type="decimal" Precision="5" Scale="4" />
+        </EntityType>
+        <Association Name="FK_Factura_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="inv_movencabezado" Type="Self.inv_movencabezado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="CodCliente" />
+            </Principal>
+            <Dependent Role="inv_movencabezado">
+              <PropertyRef Name="CodTercero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="inv_movencabezado" Type="Self.inv_movencabezado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CodUsuario" />
+            </Principal>
+            <Dependent Role="inv_movencabezado">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_movdetalle_inv_movencabezado1">
+          <End Role="inv_movencabezado" Type="Self.inv_movencabezado" Multiplicity="1" />
+          <End Role="inv_movdetalle" Type="Self.inv_movdetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inv_movencabezado">
+              <PropertyRef Name="idMovimiento" />
+            </Principal>
+            <Dependent Role="inv_movdetalle">
+              <PropertyRef Name="idMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_movdetalle_Producto">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="inv_movdetalle" Type="Self.inv_movdetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="inv_movdetalle">
+              <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_movencabezado_comprobanteTipo">
+          <End Role="comprobanteTipo" Type="Self.comprobanteTipo" Multiplicity="0..1" />
+          <End Role="inv_movencabezado" Type="Self.inv_movencabezado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comprobanteTipo">
+              <PropertyRef Name="idNCF" />
+            </Principal>
+            <Dependent Role="inv_movencabezado">
+              <PropertyRef Name="idNCF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_movencabezado_documento">
+          <End Role="documento" Type="Self.documento" Multiplicity="1" />
+          <End Role="inv_movencabezado" Type="Self.inv_movencabezado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="documento">
+              <PropertyRef Name="tipoDocumento" />
+            </Principal>
+            <Dependent Role="inv_movencabezado">
+              <PropertyRef Name="tipoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producto_CategoriaProd">
+          <End Role="CategoriaProd" Type="Self.CategoriaProd" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaProd">
+              <PropertyRef Name="CodCategoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="CodCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="EliminacionCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodCategoria" Type="int" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="InsercionCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="InsercionCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NombreCliente" Type="nvarchar" Mode="In" />
+          <Parameter Name="RNC" Type="nvarchar" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="TelMovil" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contacto" Type="nvarchar" Mode="In" />
+          <Parameter Name="EstadoCli" Type="bit" Mode="In" />
+          <Parameter Name="TipoPrecio" Type="int" Mode="In" />
+        </Function>
+        <Function Name="InsercionFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodCliente" Type="int" Mode="In" />
+          <Parameter Name="CodUsuario" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+          <Parameter Name="SubTotal" Type="money" Mode="In" />
+          <Parameter Name="Impuesto" Type="money" Mode="In" />
+          <Parameter Name="Descuento" Type="money" Mode="In" />
+          <Parameter Name="Total" Type="money" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="InsercionProd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodigoProd" Type="nvarchar" Mode="In" />
+          <Parameter Name="NombreProd" Type="nvarchar" Mode="In" />
+          <Parameter Name="Precio1" Type="money" Mode="In" />
+          <Parameter Name="Precio2" Type="money" Mode="In" />
+          <Parameter Name="Precio3" Type="money" Mode="In" />
+          <Parameter Name="EstadoProd" Type="bit" Mode="In" />
+          <Parameter Name="ExistenciaProd" Type="int" Mode="In" />
+          <Parameter Name="CodCategoria" Type="int" Mode="In" />
+          <Parameter Name="UnidadProd" Type="nchar" Mode="In" />
+          <Parameter Name="CantidadMin" Type="int" Mode="In" />
+          <Parameter Name="Impuesto" Type="decimal" Mode="In" />
+          <Parameter Name="CostoProd" Type="money" Mode="In" />
+          <Parameter Name="Nota" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="InsercionUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Administrador" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="ModificacionCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodCategoria" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Estado" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="ModificacionCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodCliente" Type="int" Mode="In" />
+          <Parameter Name="NombreCliente" Type="nvarchar" Mode="In" />
+          <Parameter Name="RNC" Type="nvarchar" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="Telefono" Type="nvarchar" Mode="In" />
+          <Parameter Name="TelMovil" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Contacto" Type="nvarchar" Mode="In" />
+          <Parameter Name="EstadoCli" Type="bit" Mode="In" />
+          <Parameter Name="TipoPrecio" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ModificacionProd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodigoProd" Type="nvarchar" Mode="In" />
+          <Parameter Name="NombreProd" Type="nvarchar" Mode="In" />
+          <Parameter Name="Precio1" Type="money" Mode="In" />
+          <Parameter Name="Precio2" Type="money" Mode="In" />
+          <Parameter Name="Precio3" Type="money" Mode="In" />
+          <Parameter Name="EstadoProd" Type="bit" Mode="In" />
+          <Parameter Name="ExistenciaProd" Type="int" Mode="In" />
+          <Parameter Name="CodCategoria" Type="int" Mode="In" />
+          <Parameter Name="UnidadProd" Type="nchar" Mode="In" />
+          <Parameter Name="CantidadMin" Type="int" Mode="In" />
+          <Parameter Name="Impuesto" Type="decimal" Mode="In" />
+          <Parameter Name="CostoProd" Type="money" Mode="In" />
+          <Parameter Name="Nota" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ModificacionUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodUsuario" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="nvarchar" Mode="In" />
+          <Parameter Name="Administrador" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SpNumeradorDocumento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdDocumento" Type="char" Mode="In" />
+        </Function>
+        <Function Name="SpNumeradorTipoComprobante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdNCF" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="FacturacionModelStoreContainer">
+          <EntitySet Name="CategoriaProd" EntityType="Self.CategoriaProd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="comprobanteTipo" EntityType="Self.comprobanteTipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="documento" EntityType="Self.documento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inv_movdetalle" EntityType="Self.inv_movdetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inv_movencabezado" EntityType="Self.inv_movencabezado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewProduct" EntityType="Self.ViewProduct" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewProduct].[CodigoProd] AS [CodigoProd], 
+    [ViewProduct].[NombreProd] AS [NombreProd], 
+    [ViewProduct].[Precio1] AS [Precio1], 
+    [ViewProduct].[Precio2] AS [Precio2], 
+    [ViewProduct].[Precio3] AS [Precio3], 
+    [ViewProduct].[EstadoProd] AS [EstadoProd], 
+    [ViewProduct].[Descripcion] AS [Descripcion], 
+    [ViewProduct].[ExistenciaProd] AS [ExistenciaProd], 
+    [ViewProduct].[UnidadProd] AS [UnidadProd], 
+    [ViewProduct].[CantidadMin] AS [CantidadMin], 
+    [ViewProduct].[Impuesto] AS [Impuesto]
+    FROM [dbo].[ViewProduct] AS [ViewProduct]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Factura_Cliente" Association="Self.FK_Factura_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="inv_movencabezado" EntitySet="inv_movencabezado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Usuario" Association="Self.FK_Factura_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="inv_movencabezado" EntitySet="inv_movencabezado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_movdetalle_inv_movencabezado1" Association="Self.FK_inv_movdetalle_inv_movencabezado1">
+            <End Role="inv_movencabezado" EntitySet="inv_movencabezado" />
+            <End Role="inv_movdetalle" EntitySet="inv_movdetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_movdetalle_Producto" Association="Self.FK_inv_movdetalle_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="inv_movdetalle" EntitySet="inv_movdetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_movencabezado_comprobanteTipo" Association="Self.FK_inv_movencabezado_comprobanteTipo">
+            <End Role="comprobanteTipo" EntitySet="comprobanteTipo" />
+            <End Role="inv_movencabezado" EntitySet="inv_movencabezado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_movencabezado_documento" Association="Self.FK_inv_movencabezado_documento">
+            <End Role="documento" EntitySet="documento" />
+            <End Role="inv_movencabezado" EntitySet="inv_movencabezado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Producto_CategoriaProd" Association="Self.FK_Producto_CategoriaProd">
+            <End Role="CategoriaProd" EntitySet="CategoriaProd" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FacturacionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoriaProd">
+          <Key>
+            <PropertyRef Name="CodCategoria" />
+          </Key>
+          <Property Name="CodCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_CategoriaProd" FromRole="CategoriaProd" ToRole="Producto" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="CodCliente" />
+          </Key>
+          <Property Name="CodCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RNC" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TelMovil" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contacto" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EstadoCli" Type="Boolean" Nullable="false" />
+          <Property Name="TipoPrecio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="inv_movencabezado" Relationship="FacturacionModel.FK_Factura_Cliente1" FromRole="Cliente" ToRole="inv_movencabezado" />
+        </EntityType>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="Codigo" />
+          </Key>
+          <Property Name="Codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoProd" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NombreProd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Precio1" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Precio2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Precio3" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EstadoProd" Type="Boolean" Nullable="false" />
+          <Property Name="ExistenciaProd" Type="Int32" />
+          <Property Name="CodCategoria" Type="Int32" Nullable="false" />
+          <Property Name="UnidadProd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CantidadMin" Type="Int32" Nullable="false" />
+          <Property Name="Impuesto" Type="Decimal" Precision="5" Scale="4" />
+          <Property Name="CostoProd" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Nota" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategoriaProd" Relationship="Self.FK_Producto_CategoriaProd" FromRole="Producto" ToRole="CategoriaProd" />
+          <NavigationProperty Name="inv_movdetalle" Relationship="FacturacionModel.FK_inv_movdetalle_Producto" FromRole="Producto" ToRole="inv_movdetalle" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="CodUsuario" />
+          </Key>
+          <Property Name="CodUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Administrador" Type="Boolean" />
+          <NavigationProperty Name="inv_movencabezado" Relationship="FacturacionModel.FK_Factura_Usuario1" FromRole="Usuario" ToRole="inv_movencabezado" />
+        </EntityType>
+        <Association Name="FK_Producto_CategoriaProd">
+          <End Role="CategoriaProd" Type="Self.CategoriaProd" Multiplicity="1" />
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoriaProd">
+              <PropertyRef Name="CodCategoria" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="CodCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FacturacionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoriaProd" EntityType="Self.CategoriaProd" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Producto_CategoriaProd" Association="Self.FK_Producto_CategoriaProd">
+            <End Role="CategoriaProd" EntitySet="CategoriaProd" />
+            <End Role="Producto" EntitySet="Producto" />
+          </AssociationSet>
+          <FunctionImport Name="ModificacionCliente">
+            <Parameter Name="CodCliente" Mode="In" Type="Int32" />
+            <Parameter Name="NombreCliente" Mode="In" Type="String" />
+            <Parameter Name="RNC" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="TelMovil" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Contacto" Mode="In" Type="String" />
+            <Parameter Name="EstadoCli" Mode="In" Type="Boolean" />
+            <Parameter Name="TipoPrecio" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ModificacionProd">
+            <Parameter Name="CodigoProd" Mode="In" Type="String" />
+            <Parameter Name="NombreProd" Mode="In" Type="String" />
+            <Parameter Name="Precio1" Mode="In" Type="Decimal" />
+            <Parameter Name="Precio2" Mode="In" Type="Decimal" />
+            <Parameter Name="Precio3" Mode="In" Type="Decimal" />
+            <Parameter Name="EstadoProd" Mode="In" Type="Boolean" />
+            <Parameter Name="ExistenciaProd" Mode="In" Type="Int32" />
+            <Parameter Name="CodCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="UnidadProd" Mode="In" Type="String" />
+            <Parameter Name="CantidadMin" Mode="In" Type="Int32" />
+            <Parameter Name="Impuesto" Mode="In" Type="Decimal" />
+            <Parameter Name="CostoProd" Mode="In" Type="Decimal" />
+            <Parameter Name="Nota" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="EliminacionCat">
+            <Parameter Name="CodCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="ModificacionUsers">
+            <Parameter Name="CodUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Administrador" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="ModificacionCat">
+            <Parameter Name="CodCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="InsercionCat" ReturnType="Collection(Int32)">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="InsercionCliente" ReturnType="Collection(Int32)">
+            <Parameter Name="NombreCliente" Mode="In" Type="String" />
+            <Parameter Name="RNC" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="TelMovil" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Contacto" Mode="In" Type="String" />
+            <Parameter Name="EstadoCli" Mode="In" Type="Boolean" />
+            <Parameter Name="TipoPrecio" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="InsercionFactura">
+            <Parameter Name="CodCliente" Mode="In" Type="Int32" />
+            <Parameter Name="CodUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="SubTotal" Mode="In" Type="Decimal" />
+            <Parameter Name="Impuesto" Mode="In" Type="Decimal" />
+            <Parameter Name="Descuento" Mode="In" Type="Decimal" />
+            <Parameter Name="Total" Mode="In" Type="Decimal" />
+            <Parameter Name="Estado" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="InsercionProd" ReturnType="Collection(Int32)">
+            <Parameter Name="CodigoProd" Mode="In" Type="String" />
+            <Parameter Name="NombreProd" Mode="In" Type="String" />
+            <Parameter Name="Precio1" Mode="In" Type="Decimal" />
+            <Parameter Name="Precio2" Mode="In" Type="Decimal" />
+            <Parameter Name="Precio3" Mode="In" Type="Decimal" />
+            <Parameter Name="EstadoProd" Mode="In" Type="Boolean" />
+            <Parameter Name="ExistenciaProd" Mode="In" Type="Int32" />
+            <Parameter Name="CodCategoria" Mode="In" Type="Int32" />
+            <Parameter Name="UnidadProd" Mode="In" Type="String" />
+            <Parameter Name="CantidadMin" Mode="In" Type="Int32" />
+            <Parameter Name="Impuesto" Mode="In" Type="Decimal" />
+            <Parameter Name="CostoProd" Mode="In" Type="Decimal" />
+            <Parameter Name="Nota" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="InsercionUsers" ReturnType="Collection(Int32)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Administrador" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <EntitySet Name="comprobanteTipo" EntityType="FacturacionModel.comprobanteTipo" />
+          <EntitySet Name="documento" EntityType="FacturacionModel.documento" />
+          <EntitySet Name="inv_movdetalle" EntityType="FacturacionModel.inv_movdetalle" />
+          <EntitySet Name="inv_movencabezado" EntityType="FacturacionModel.inv_movencabezado" />
+          <AssociationSet Name="FK_Factura_Cliente1" Association="FacturacionModel.FK_Factura_Cliente1">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="inv_movencabezado" EntitySet="inv_movencabezado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_movencabezado_comprobanteTipo" Association="FacturacionModel.FK_inv_movencabezado_comprobanteTipo">
+            <End Role="comprobanteTipo" EntitySet="comprobanteTipo" />
+            <End Role="inv_movencabezado" EntitySet="inv_movencabezado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_movencabezado_documento" Association="FacturacionModel.FK_inv_movencabezado_documento">
+            <End Role="documento" EntitySet="documento" />
+            <End Role="inv_movencabezado" EntitySet="inv_movencabezado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_movdetalle_inv_movencabezado1" Association="FacturacionModel.FK_inv_movdetalle_inv_movencabezado1">
+            <End Role="inv_movencabezado" EntitySet="inv_movencabezado" />
+            <End Role="inv_movdetalle" EntitySet="inv_movdetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inv_movdetalle_Producto" Association="FacturacionModel.FK_inv_movdetalle_Producto">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="inv_movdetalle" EntitySet="inv_movdetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Usuario1" Association="FacturacionModel.FK_Factura_Usuario1">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="inv_movencabezado" EntitySet="inv_movencabezado" />
+          </AssociationSet>
+          <FunctionImport Name="SpNumeradorDocumento" ReturnType="Collection(Int32)">
+          <Parameter Name="IdDocumento" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SpNumeradorTipoComprobante" ReturnType="Collection(Int32)">
+          <Parameter Name="IdNCF" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ViewProduct" EntityType="FacturacionModel.ViewProduct" />
+        </EntityContainer>
+        <EntityType Name="comprobanteTipo">
+          <Key>
+            <PropertyRef Name="idNCF" />
+          </Key>
+          <Property Name="idNCF" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="prefijo" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="secuencia" Type="Int32" />
+          <Property Name="limite" Type="Int32" />
+          <Property Name="factura" Type="Boolean" />
+          <NavigationProperty Name="inv_movencabezado" Relationship="FacturacionModel.FK_inv_movencabezado_comprobanteTipo" FromRole="comprobanteTipo" ToRole="inv_movencabezado" />
+        </EntityType>
+        <EntityType Name="documento">
+          <Key>
+            <PropertyRef Name="tipoDocumento" />
+          </Key>
+          <Property Name="tipoDocumento" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ultimonumero" Type="Int32" Nullable="false" />
+          <Property Name="EfectoExistencia" Type="Decimal" Precision="2" Scale="0" />
+          <NavigationProperty Name="inv_movencabezado" Relationship="FacturacionModel.FK_inv_movencabezado_documento" FromRole="documento" ToRole="inv_movencabezado" />
+        </EntityType>
+        <EntityType Name="inv_movdetalle">
+          <Key>
+            <PropertyRef Name="idMovimiento" />
+            <PropertyRef Name="fila" />
+          </Key>
+          <Property Name="idMovimiento" Type="Int32" Nullable="false" />
+          <Property Name="fila" Type="Int32" Nullable="false" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="costo" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="impuesto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="inv_movencabezado" Relationship="FacturacionModel.FK_inv_movdetalle_inv_movencabezado1" FromRole="inv_movdetalle" ToRole="inv_movencabezado" />
+          <NavigationProperty Name="Producto" Relationship="FacturacionModel.FK_inv_movdetalle_Producto" FromRole="inv_movdetalle" ToRole="Producto" />
+        </EntityType>
+        <EntityType Name="inv_movencabezado">
+          <Key>
+            <PropertyRef Name="idMovimiento" />
+          </Key>
+          <Property Name="idMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoDocumento" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="numeroDoc" Type="Int32" Nullable="false" />
+          <Property Name="CodTercero" Type="Int32" Nullable="false" />
+          <Property Name="CodUsuario" Type="Int32" Nullable="false" />
+          <Property Name="rnc" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="idNCF" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="ncf" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="ncfAfectado" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="totalExento" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="totalGravado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Impuesto" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Descuento" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="EfectoExistencia" Type="Decimal" Precision="2" Scale="0" />
+          <NavigationProperty Name="Cliente" Relationship="FacturacionModel.FK_Factura_Cliente1" FromRole="inv_movencabezado" ToRole="Cliente" />
+          <NavigationProperty Name="comprobanteTipo" Relationship="FacturacionModel.FK_inv_movencabezado_comprobanteTipo" FromRole="inv_movencabezado" ToRole="comprobanteTipo" />
+          <NavigationProperty Name="documento" Relationship="FacturacionModel.FK_inv_movencabezado_documento" FromRole="inv_movencabezado" ToRole="documento" />
+          <NavigationProperty Name="inv_movdetalle" Relationship="FacturacionModel.FK_inv_movdetalle_inv_movencabezado1" FromRole="inv_movencabezado" ToRole="inv_movdetalle" />
+          <NavigationProperty Name="Usuario" Relationship="FacturacionModel.FK_Factura_Usuario1" FromRole="inv_movencabezado" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_Factura_Cliente1">
+          <End Type="FacturacionModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="FacturacionModel.inv_movencabezado" Role="inv_movencabezado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="CodCliente" />
+            </Principal>
+            <Dependent Role="inv_movencabezado">
+              <PropertyRef Name="CodTercero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_movencabezado_comprobanteTipo">
+          <End Type="FacturacionModel.comprobanteTipo" Role="comprobanteTipo" Multiplicity="0..1" />
+          <End Type="FacturacionModel.inv_movencabezado" Role="inv_movencabezado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="comprobanteTipo">
+              <PropertyRef Name="idNCF" />
+            </Principal>
+            <Dependent Role="inv_movencabezado">
+              <PropertyRef Name="idNCF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_movencabezado_documento">
+          <End Type="FacturacionModel.documento" Role="documento" Multiplicity="1" />
+          <End Type="FacturacionModel.inv_movencabezado" Role="inv_movencabezado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="documento">
+              <PropertyRef Name="tipoDocumento" />
+            </Principal>
+            <Dependent Role="inv_movencabezado">
+              <PropertyRef Name="tipoDocumento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_movdetalle_inv_movencabezado1">
+          <End Type="FacturacionModel.inv_movencabezado" Role="inv_movencabezado" Multiplicity="1" />
+          <End Type="FacturacionModel.inv_movdetalle" Role="inv_movdetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="inv_movencabezado">
+              <PropertyRef Name="idMovimiento" />
+            </Principal>
+            <Dependent Role="inv_movdetalle">
+              <PropertyRef Name="idMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inv_movdetalle_Producto">
+          <End Type="FacturacionModel.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="FacturacionModel.inv_movdetalle" Role="inv_movdetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="Codigo" />
+            </Principal>
+            <Dependent Role="inv_movdetalle">
+              <PropertyRef Name="Codigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Usuario1">
+          <End Type="FacturacionModel.Usuario" Role="Usuario" Multiplicity="1" />
+          <End Type="FacturacionModel.inv_movencabezado" Role="inv_movencabezado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="CodUsuario" />
+            </Principal>
+            <Dependent Role="inv_movencabezado">
+              <PropertyRef Name="CodUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ViewProduct">
+          <Key>
+            <PropertyRef Name="CodigoProd" />
+            <PropertyRef Name="NombreProd" />
+            <PropertyRef Name="Precio1" />
+            <PropertyRef Name="EstadoProd" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="UnidadProd" />
+            <PropertyRef Name="CantidadMin" />
+          </Key>
+          <Property Name="CodigoProd" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="NombreProd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Precio1" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Precio2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Precio3" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EstadoProd" Type="Boolean" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExistenciaProd" Type="Int32" />
+          <Property Name="UnidadProd" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CantidadMin" Type="Int32" Nullable="false" />
+          <Property Name="Impuesto" Type="Decimal" Precision="5" Scale="4" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FacturacionModelStoreContainer" CdmEntityContainer="FacturacionEntities">
+          <EntitySetMapping Name="CategoriaProd">
+            <EntityTypeMapping TypeName="FacturacionModel.CategoriaProd">
+              <MappingFragment StoreEntitySet="CategoriaProd">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CodCategoria" ColumnName="CodCategoria" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="FacturacionModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="CodCliente" ColumnName="CodCliente" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="TelMovil" ColumnName="TelMovil" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="EstadoCli" ColumnName="EstadoCli" />
+                <ScalarProperty Name="TipoPrecio" ColumnName="TipoPrecio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="FacturacionModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodigoProd" ColumnName="CodigoProd" />
+                <ScalarProperty Name="NombreProd" ColumnName="NombreProd" />
+                <ScalarProperty Name="Precio1" ColumnName="Precio1" />
+                <ScalarProperty Name="Precio2" ColumnName="Precio2" />
+                <ScalarProperty Name="Precio3" ColumnName="Precio3" />
+                <ScalarProperty Name="EstadoProd" ColumnName="EstadoProd" />
+                <ScalarProperty Name="ExistenciaProd" ColumnName="ExistenciaProd" />
+                <ScalarProperty Name="CodCategoria" ColumnName="CodCategoria" />
+                <ScalarProperty Name="UnidadProd" ColumnName="UnidadProd" />
+                <ScalarProperty Name="CantidadMin" ColumnName="CantidadMin" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="CostoProd" ColumnName="CostoProd" />
+                <ScalarProperty Name="Nota" ColumnName="Nota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="FacturacionModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Administrador" ColumnName="Administrador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ModificacionCliente" FunctionName="FacturacionModel.Store.ModificacionCliente" />
+          <FunctionImportMapping FunctionImportName="ModificacionProd" FunctionName="FacturacionModel.Store.ModificacionProd" />
+          <FunctionImportMapping FunctionImportName="EliminacionCat" FunctionName="FacturacionModel.Store.EliminacionCat" />
+          <FunctionImportMapping FunctionImportName="ModificacionUsers" FunctionName="FacturacionModel.Store.ModificacionUsers" />
+          <FunctionImportMapping FunctionImportName="ModificacionCat" FunctionName="FacturacionModel.Store.ModificacionCat" />
+          <FunctionImportMapping FunctionImportName="InsercionCat" FunctionName="FacturacionModel.Store.InsercionCat" />
+          <FunctionImportMapping FunctionImportName="InsercionCliente" FunctionName="FacturacionModel.Store.InsercionCliente" />
+          <FunctionImportMapping FunctionImportName="InsercionFactura" FunctionName="FacturacionModel.Store.InsercionFactura" />
+          <FunctionImportMapping FunctionImportName="InsercionProd" FunctionName="FacturacionModel.Store.InsercionProd" />
+          <FunctionImportMapping FunctionImportName="InsercionUsers" FunctionName="FacturacionModel.Store.InsercionUsers" />
+          <EntitySetMapping Name="comprobanteTipo">
+            <EntityTypeMapping TypeName="FacturacionModel.comprobanteTipo">
+              <MappingFragment StoreEntitySet="comprobanteTipo">
+                <ScalarProperty Name="factura" ColumnName="factura" />
+                <ScalarProperty Name="limite" ColumnName="limite" />
+                <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+                <ScalarProperty Name="prefijo" ColumnName="prefijo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="idNCF" ColumnName="idNCF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="documento">
+            <EntityTypeMapping TypeName="FacturacionModel.documento">
+              <MappingFragment StoreEntitySet="documento">
+                <ScalarProperty Name="EfectoExistencia" ColumnName="EfectoExistencia" />
+                <ScalarProperty Name="ultimonumero" ColumnName="ultimonumero" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inv_movdetalle">
+            <EntityTypeMapping TypeName="FacturacionModel.inv_movdetalle">
+              <MappingFragment StoreEntitySet="inv_movdetalle">
+                <ScalarProperty Name="impuesto" ColumnName="impuesto" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="fila" ColumnName="fila" />
+                <ScalarProperty Name="idMovimiento" ColumnName="idMovimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inv_movencabezado">
+            <EntityTypeMapping TypeName="FacturacionModel.inv_movencabezado">
+              <MappingFragment StoreEntitySet="inv_movencabezado">
+                <ScalarProperty Name="EfectoExistencia" ColumnName="EfectoExistencia" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="totalGravado" ColumnName="totalGravado" />
+                <ScalarProperty Name="totalExento" ColumnName="totalExento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="ncfAfectado" ColumnName="ncfAfectado" />
+                <ScalarProperty Name="ncf" ColumnName="ncf" />
+                <ScalarProperty Name="idNCF" ColumnName="idNCF" />
+                <ScalarProperty Name="rnc" ColumnName="rnc" />
+                <ScalarProperty Name="CodUsuario" ColumnName="CodUsuario" />
+                <ScalarProperty Name="CodTercero" ColumnName="CodTercero" />
+                <ScalarProperty Name="numeroDoc" ColumnName="numeroDoc" />
+                <ScalarProperty Name="tipoDocumento" ColumnName="tipoDocumento" />
+                <ScalarProperty Name="idMovimiento" ColumnName="idMovimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpNumeradorDocumento" FunctionName="FacturacionModel.Store.SpNumeradorDocumento" />
+          <FunctionImportMapping FunctionImportName="SpNumeradorTipoComprobante" FunctionName="FacturacionModel.Store.SpNumeradorTipoComprobante" />
+          <EntitySetMapping Name="ViewProduct">
+            <EntityTypeMapping TypeName="FacturacionModel.ViewProduct">
+              <MappingFragment StoreEntitySet="ViewProduct">
+                <ScalarProperty Name="Impuesto" ColumnName="Impuesto" />
+                <ScalarProperty Name="CantidadMin" ColumnName="CantidadMin" />
+                <ScalarProperty Name="UnidadProd" ColumnName="UnidadProd" />
+                <ScalarProperty Name="ExistenciaProd" ColumnName="ExistenciaProd" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="EstadoProd" ColumnName="EstadoProd" />
+                <ScalarProperty Name="Precio3" ColumnName="Precio3" />
+                <ScalarProperty Name="Precio2" ColumnName="Precio2" />
+                <ScalarProperty Name="Precio1" ColumnName="Precio1" />
+                <ScalarProperty Name="NombreProd" ColumnName="NombreProd" />
+                <ScalarProperty Name="CodigoProd" ColumnName="CodigoProd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

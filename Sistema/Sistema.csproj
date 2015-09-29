@@ -223,6 +223,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="database\FacturacionScript.sql" />
+    <Content Include="database\FacturacionScript2.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -37,7 +37,7 @@ using Sistema.Data;namespace Sistema.Vista
             DGVComprobantes.Columns[5].ReadOnly = true;
           
             DataGridViewImageColumn delbut = new DataGridViewImageColumn();
-            delbut.Image = Image.FromFile(Environment.CurrentDirectory + "/Resources/icoSave.gif");
+            delbut.Image = Image.FromFile(Environment.CurrentDirectory + "\\Resources\\icoSave.gif");
             delbut.Width = 20;
             delbut.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             DGVComprobantes.Columns.Add(delbut);

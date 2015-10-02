@@ -38,22 +38,25 @@
             // 
             // DGVComprobantes
             // 
+            this.DGVComprobantes.AllowUserToAddRows = false;
+            this.DGVComprobantes.AllowUserToDeleteRows = false;
             this.DGVComprobantes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.DGVComprobantes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.DGVComprobantes.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.DGVComprobantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVComprobantes.Location = new System.Drawing.Point(12, 12);
+            this.DGVComprobantes.Location = new System.Drawing.Point(8, 11);
             this.DGVComprobantes.Name = "DGVComprobantes";
-            this.DGVComprobantes.Size = new System.Drawing.Size(621, 275);
+            this.DGVComprobantes.RowHeadersVisible = false;
+            this.DGVComprobantes.Size = new System.Drawing.Size(557, 207);
             this.DGVComprobantes.TabIndex = 3;
             this.DGVComprobantes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVComprobantes_CellClick);
-            this.DGVComprobantes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVComprobantes_CellContentClick);
+            this.DGVComprobantes.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVComprobantes_CellValueChanged);
             this.DGVComprobantes.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DGVComprobantes_EditingControlShowing);
             // 
             // btnSalir
             // 
             this.btnSalir.ForeColor = System.Drawing.Color.Red;
             this.btnSalir.Image = global::Sistema.Properties.Resources.Exit;
-            this.btnSalir.Location = new System.Drawing.Point(558, 293);
+            this.btnSalir.Location = new System.Drawing.Point(490, 224);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 56);
             this.btnSalir.TabIndex = 4;
@@ -63,7 +66,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Image = global::Sistema.Properties.Resources.Accept;
-            this.btnAceptar.Location = new System.Drawing.Point(12, 293);
+            this.btnAceptar.Location = new System.Drawing.Point(8, 224);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 56);
             this.btnAceptar.TabIndex = 5;
@@ -73,7 +76,7 @@
             // btnCancelar
             // 
             this.btnCancelar.Image = global::Sistema.Properties.Resources.cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(93, 293);
+            this.btnCancelar.Location = new System.Drawing.Point(89, 224);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 56);
             this.btnCancelar.TabIndex = 6;
@@ -84,7 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(648, 354);
+            this.ClientSize = new System.Drawing.Size(585, 288);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.btnSalir);

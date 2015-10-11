@@ -36,6 +36,10 @@ namespace Sistema.Consulta
             var context = new FacturacionEntities();
             Bs.DataSource = context.ViewProduct.ToList();
             DGVProducts.DataSource = Bs;
+            DGVProducts.Columns["CodigoProd"].HeaderText = "Codigo";
+            DGVProducts.Columns["Precio1"].DefaultCellStyle.Format = "0.00#";
+            DGVProducts.Columns["Precio2"].DefaultCellStyle.Format = "0.00#";
+            DGVProducts.Columns["Precio3"].DefaultCellStyle.Format = "0.00#";
         }
         protected void busqueda(string filtro)
         {

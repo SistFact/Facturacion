@@ -308,52 +308,125 @@ namespace Formularios
         return Validado;
     }
 
-        public bool isValidateRNC1(Control con) 
+        public bool isValidateRNC1(Control con)
         {
-            bool state = true;
-            char[] rnc = con.Text.ToCharArray();
-            char[] peso = { '7', '9', '8', '6', '5', '4', '3', '2' };
-            int suma = 0;
-            int division = 0;
-            if (rnc.Length != 9)
+            if (con.Text.Length.Equals(9))
             {
-                EpError.SetError(con, "Son 9 Digitos");
-                state = false;
+
+                bool state = true;
+                char[] rnc = con.Text.ToCharArray();
+                char[] peso = { '7', '9', '8', '6', '5', '4', '3', '2' };
+                int suma = 0;
+                int division = 0;
+                if (rnc.Length != 9)
+                {
+                    EpError.SetError(con, "Son 9 Digitos");
+                    state = false;
+                }
+                else
+                {
+                    for (int i = 0; i < 8; i++)
+                    {
+                        if (Char.IsDigit(rnc[i]) != true)
+                        {
+                            EpError.SetError(con, "Solo Digitos");
+                            state = false;
+                        }
+                        suma = suma + ((int)Char.GetNumericValue(rnc[i]) * (int)Char.GetNumericValue(peso[i]));
+
+                    }
+                    division = suma / 11;
+                    int resto = suma - (division * 11);
+                    int digito = 0;
+
+                    if (resto == 0)
+                        digito = 2;
+                    else if (resto == 1)
+                        digito = 1;
+                    else
+                        digito = 11 - resto;
+                    if (digito != (int)Char.GetNumericValue(rnc[8]))
+                    {
+                        EpError.SetError(con, "No es Valido");
+                        state = false;
+                    }
+                }
+                if (state != false)
+                    // Se implementa cuando todo es valido 
+                    // dejarlo sin ningun texto para que no presente el icono del error.
+                    EpError.SetError(con, "");
+                return state;
             }
             else
             {
-                for (int i = 0; i < 8; i++)
+                bool state = true;
+
+                //Declaración de variables a nivel de método o función.
+                int verificador = 0;
+                int digito = 0;
+                int digitoVerificador = 0;
+                int digitoImpar = 0;
+                int sumaPar = 0;
+                int sumaImpar = 0;
+                int longitud = Convert.ToInt32(con.Text.Length);
+                /*Control de errores en el código*/
+
+                //verificamos que la longitud del parametro sea igual a 11
+                if (longitud == 11)
                 {
-                    if (Char.IsDigit(rnc[i]) != true)
+                    digitoVerificador = Convert.ToInt32(con.Text.Substring(10, 1));
+                    //recorremos en un ciclo for cada dígito de la cédula
+                    for (int i = 9; i >= 0; i--)
                     {
-                        EpError.SetError(con, "Solo Digitos");
+                        //si el digito no es par multiplicamos por 2
+                        digito = Convert.ToInt32(con.Text.Substring(i, 1));
+                        if ((i % 2) != 0)
+                        {
+                            digitoImpar = digito * 2;
+                            //si el digito obtenido es mayor a 10, restamos 9
+                            if (digitoImpar >= 10)
+                            {
+                                digitoImpar = digitoImpar - 9;
+                            }
+                            sumaImpar = sumaImpar + digitoImpar;
+                        }
+                        /*En los demás casos sumamos el dígito y lo aculamos 
+                          en la variable */
+                        else
+                        {
+                            sumaPar = sumaPar + digito;
+                        }
+                    }
+                    /*Obtenemos el verificador restandole a 10 el modulo 10 
+                   de la suma total de los dígitos*/
+                    verificador = 10 - ((sumaPar + sumaImpar) % 10);
+                    /*si el verificador es igual a 10 y el dígito verificador
+                    es igual a cero o el verificador y el dígito verificador 
+                    son iguales retorna verdadero*/
+                    if ((((verificador == 10) && (digitoVerificador == 0))
+                         || (verificador == digitoVerificador)) && (con.Text != "00000000000"))
+                    {
+
+                        EpError.SetError(con, "");
+
+                    }
+                    else
+                    {
+                        EpError.SetError(con, "Cedula Invalida,Entre los Datos Correctos");
                         state = false;
                     }
-                    suma = suma + ((int)Char.GetNumericValue(rnc[i]) * (int)Char.GetNumericValue(peso[i]));
-
                 }
-                division = suma / 11;
-                int resto = suma - (division * 11);
-                int digito = 0;
-
-                if (resto == 0)
-                    digito = 2;
-                else if (resto == 1)
-                    digito = 1;
                 else
-                    digito = 11 - resto;
-                if (digito != (int)Char.GetNumericValue(rnc[8]))
                 {
-                    EpError.SetError(con, "No es Valido");
-                    state = false;
+                    if (longitud < 11)
+                    {
+                        EpError.SetError(con, "La cédula debe contener once(11) digitos");
+                        state = false;
+                    }
                 }
-            }
-            if (state != false)
-                // Se implementa cuando todo es valido 
-                // dejarlo sin ningun texto para que no presente el icono del error.
-                EpError.SetError(con, "");
-            return state;
+                return state;
         }
+    }
 
         #endregion
 

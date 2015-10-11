@@ -187,14 +187,18 @@ namespace Sistema.Vista
             //e.Cancel = true;
         }
 
+
+
+
+
+
+
+
         #endregion
 
+        private void label3_Click(object sender, EventArgs e)
+        {
 
-
-
-
-
-
-
+        }
     }
 }

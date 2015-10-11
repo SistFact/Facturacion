@@ -23,7 +23,7 @@ namespace Sistema.Vista
         #region Propierty
         private void FrmFactura_Load(object sender, EventArgs e) 
         {
-          
+
         }
         public string Prop_idProducts { get; set; }
         public string Prop_NameProducts { get; set; }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCliente));
             this.panel1 = new System.Windows.Forms.Panel();
             this.TxtPrecio = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -60,10 +61,12 @@
             // 
             // btnEditar_Cancelar
             // 
+            this.btnEditar_Cancelar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar_Cancelar.Image")));
             this.btnEditar_Cancelar.Location = new System.Drawing.Point(92, 322);
             // 
             // btnNuevo_Guardar
             // 
+            this.btnNuevo_Guardar.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevo_Guardar.Image")));
             this.btnNuevo_Guardar.Location = new System.Drawing.Point(12, 322);
             // 
             // chkEstado
@@ -159,11 +162,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 72);
+            this.label3.Location = new System.Drawing.Point(25, 72);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 11;
-            this.label3.Text = "RNC";
+            this.label3.Text = "RNC/CED";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -211,7 +215,7 @@
             // MTxtRNC
             // 
             this.MTxtRNC.Location = new System.Drawing.Point(89, 65);
-            this.MTxtRNC.Mask = "000-00000-0";
+            this.MTxtRNC.Mask = "00000000000";
             this.MTxtRNC.Name = "MTxtRNC";
             this.MTxtRNC.Size = new System.Drawing.Size(158, 20);
             this.MTxtRNC.TabIndex = 4;

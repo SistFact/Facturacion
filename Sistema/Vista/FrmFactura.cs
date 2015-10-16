@@ -43,6 +43,17 @@ namespace Sistema.Vista
         public double Prop_ITBIS { get; set; }
         public double Prop_Total { get; set; }
 
+        // Propiedades de Frm Pago
+
+        public decimal Prop_Efectivo { get; set; }
+        public decimal Prop_Tarjeta { get; set; }
+        public String Prop_NoTarjeta { get; set; }
+        public decimal Pro_Cheque { get; set; }
+        public decimal Prop_NoCheque { get; set; }
+        public decimal Prop_Credito { get; set; }
+        public int Prop_Cliente { get; set; }
+        
+
         #endregion
 
         #region Property with fields
@@ -135,7 +146,7 @@ namespace Sistema.Vista
                 txtTotalItbis.Text = Prop_Titbis.ToString();
                 txtTotalPagar.Text = Prop_TPagar.ToString();
 
-                FrmPago.Total = Convert.ToDecimal(Prop_TPagar);
+                //FrmPago.Total = Convert.ToDecimal(Prop_TPagar);
             }
             else
             {
@@ -208,7 +219,18 @@ namespace Sistema.Vista
         private void guardarDatos()
         {
             FrmPago FrmPago = new FrmPago();
-            //FrmPago.ShowDialog();
+            FrmPago.Total = Convert.ToDecimal(Prop_TPagar);
+            if (FrmPago.ShowDialog() == DialogResult.OK)
+            {
+              
+                 
+               
+
+
+            }
+            
+            
+            /*
             // Crear tabla para guardar los producto de la nueva factura
             DataTable table = new DataTable();
             // Columnas necesarias para el registros
@@ -236,7 +258,10 @@ namespace Sistema.Vista
                 // Prueba de que los registros a sido grabada a la nueva tabla
                 MessageBox.Show(row["Codigo"].ToString() + " " + row["Cantidad"].ToString());
             }
+            */
 
         }
     }
 }
+
+

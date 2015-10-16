@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.TxtEfectivo = new System.Windows.Forms.TextBox();
-            this.BtnFacturar = new System.Windows.Forms.Button();
+            this.BtnCobrar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.TxtDevuelta = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,14 +37,14 @@
             this.LblTotal = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.TxtClienteid = new System.Windows.Forms.TextBox();
+            this.TxtNoCheque = new System.Windows.Forms.TextBox();
+            this.TxtNoTarjeta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TxtTarjeta = new System.Windows.Forms.TextBox();
+            this.TxtCredito = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtCheque = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -57,18 +57,18 @@
             this.TxtEfectivo.Name = "TxtEfectivo";
             this.TxtEfectivo.Size = new System.Drawing.Size(208, 38);
             this.TxtEfectivo.TabIndex = 0;
-            this.TxtEfectivo.TextChanged += new System.EventHandler(this.TxtEfectivo_TextChanged);
+            this.TxtEfectivo.TextChanged += new System.EventHandler(this.Calcular);
             // 
-            // BtnFacturar
+            // BtnCobrar
             // 
-            this.BtnFacturar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnFacturar.Location = new System.Drawing.Point(429, 286);
-            this.BtnFacturar.Name = "BtnFacturar";
-            this.BtnFacturar.Size = new System.Drawing.Size(125, 51);
-            this.BtnFacturar.TabIndex = 0;
-            this.BtnFacturar.Text = "Cobrar";
-            this.BtnFacturar.UseVisualStyleBackColor = true;
-            this.BtnFacturar.Click += new System.EventHandler(this.BtnFacturar_Click);
+            this.BtnCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCobrar.Location = new System.Drawing.Point(429, 286);
+            this.BtnCobrar.Name = "BtnCobrar";
+            this.BtnCobrar.Size = new System.Drawing.Size(125, 51);
+            this.BtnCobrar.TabIndex = 0;
+            this.BtnCobrar.Text = "Cobrar";
+            this.BtnCobrar.UseVisualStyleBackColor = true;
+            this.BtnCobrar.Click += new System.EventHandler(this.BtnCobrar_Click);
             // 
             // button2
             // 
@@ -108,7 +108,6 @@
             this.label4.Size = new System.Drawing.Size(193, 31);
             this.label4.TabIndex = 4;
             this.label4.Text = "Valor a Pagar :";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // LblTotal
             // 
@@ -122,15 +121,16 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.TxtClienteid);
+            this.panel1.Controls.Add(this.TxtNoCheque);
+            this.panel1.Controls.Add(this.TxtNoTarjeta);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.TxtTarjeta);
+            this.panel1.Controls.Add(this.TxtCredito);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.TxtCheque);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.TxtEfectivo);
@@ -151,29 +151,29 @@
             this.button1.Text = "Cliente";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBox6
+            // TxtClienteid
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(362, 197);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(114, 38);
-            this.textBox6.TabIndex = 16;
+            this.TxtClienteid.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtClienteid.Location = new System.Drawing.Point(362, 197);
+            this.TxtClienteid.Name = "TxtClienteid";
+            this.TxtClienteid.Size = new System.Drawing.Size(114, 38);
+            this.TxtClienteid.TabIndex = 16;
             // 
-            // textBox5
+            // TxtNoCheque
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(362, 155);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(282, 38);
-            this.textBox5.TabIndex = 15;
+            this.TxtNoCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtNoCheque.Location = new System.Drawing.Point(362, 155);
+            this.TxtNoCheque.Name = "TxtNoCheque";
+            this.TxtNoCheque.Size = new System.Drawing.Size(282, 38);
+            this.TxtNoCheque.TabIndex = 15;
             // 
-            // textBox4
+            // TxtNoTarjeta
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(362, 114);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(282, 38);
-            this.textBox4.TabIndex = 14;
+            this.TxtNoTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtNoTarjeta.Location = new System.Drawing.Point(362, 114);
+            this.TxtNoTarjeta.Name = "TxtNoTarjeta";
+            this.TxtNoTarjeta.Size = new System.Drawing.Size(282, 38);
+            this.TxtNoTarjeta.TabIndex = 14;
             // 
             // label3
             // 
@@ -185,21 +185,23 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "Tarjeta";
             // 
-            // textBox3
+            // TxtTarjeta
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(148, 114);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(208, 38);
-            this.textBox3.TabIndex = 12;
+            this.TxtTarjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTarjeta.Location = new System.Drawing.Point(148, 114);
+            this.TxtTarjeta.Name = "TxtTarjeta";
+            this.TxtTarjeta.Size = new System.Drawing.Size(208, 38);
+            this.TxtTarjeta.TabIndex = 12;
+            this.TxtTarjeta.TextChanged += new System.EventHandler(this.Calcular);
             // 
-            // textBox2
+            // TxtCredito
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(148, 197);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(208, 38);
-            this.textBox2.TabIndex = 11;
+            this.TxtCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCredito.Location = new System.Drawing.Point(148, 197);
+            this.TxtCredito.Name = "TxtCredito";
+            this.TxtCredito.Size = new System.Drawing.Size(208, 38);
+            this.TxtCredito.TabIndex = 11;
+            this.TxtCredito.TextChanged += new System.EventHandler(this.Calcular);
             // 
             // label2
             // 
@@ -211,13 +213,14 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Credito";
             // 
-            // textBox1
+            // TxtCheque
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(148, 155);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 38);
-            this.textBox1.TabIndex = 9;
+            this.TxtCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCheque.Location = new System.Drawing.Point(148, 155);
+            this.TxtCheque.Name = "TxtCheque";
+            this.TxtCheque.Size = new System.Drawing.Size(208, 38);
+            this.TxtCheque.TabIndex = 9;
+            this.TxtCheque.TextChanged += new System.EventHandler(this.Calcular);
             // 
             // label6
             // 
@@ -248,7 +251,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TxtDevuelta);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.BtnFacturar);
+            this.Controls.Add(this.BtnCobrar);
             this.Name = "FrmPago";
             this.Text = "FrmPago";
             this.Load += new System.EventHandler(this.FrmPago_Load);
@@ -261,7 +264,7 @@
 
         #endregion
         private System.Windows.Forms.TextBox TxtEfectivo;
-        private System.Windows.Forms.Button BtnFacturar;
+        private System.Windows.Forms.Button BtnCobrar;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox TxtDevuelta;
         private System.Windows.Forms.Label label1;
@@ -270,14 +273,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox TxtClienteid;
+        private System.Windows.Forms.TextBox TxtNoCheque;
+        private System.Windows.Forms.TextBox TxtNoTarjeta;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TxtTarjeta;
+        private System.Windows.Forms.TextBox TxtCredito;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtCheque;
         private System.Windows.Forms.Label label6;
     }
 }

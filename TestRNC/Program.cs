@@ -11,13 +11,18 @@ namespace TestRNC
         static void Main(string[] args)
         {
 
+            String test = "";
+           // Console.WriteLine(Convert.ToDecimal(test));
+            Console.WriteLine(Decimal.Parse(test));
+            Console.ReadKey();
 
-
+            /*
             Console.WriteLine(Program.Numero);
             
             // char[] rnc = Console.ReadLine().ToCharArray();
             // ValidarRNC(rnc);
             Console.ReadKey();
+            */
         }
 
         public static int _num;

@@ -21,6 +21,7 @@ namespace Sistema.Vista
         {
             CargarComboCat();
             this.CbCategoria.SelectedValue = 1;
+            TxtCodigoProd.Enabled = true;
         }
         private void BtnTab_Click(object sender, EventArgs e)
         {
@@ -41,6 +42,7 @@ namespace Sistema.Vista
         protected override void despuesdecancelar()
         {
             this.TxtCodigo.Enabled = true;
+            this.TxtCodigoProd.Enabled = true;
             int id;
             if (int.TryParse(oldid, out id))
             {
@@ -80,6 +82,15 @@ namespace Sistema.Vista
         }
         protected override void Actualizar()
         {
+            decimal precio1, precio2, precio3, costo, impuesto;
+
+            precio1 = (TxtPrecio1.Text == "") ? 0 : Convert.ToDecimal(TxtPrecio1.Text);
+            precio2 = (TxtPrecio2.Text == "") ? 0 : Convert.ToDecimal(TxtPrecio2.Text);
+            precio3 = (TxtPrecio3.Text == "") ? 0 : Convert.ToDecimal(TxtPrecio3.Text);
+            costo = (TxtCosto.Text == "") ? 0 : Convert.ToDecimal(TxtCosto.Text);
+            impuesto = (TxtImpuesto.Text == "") ? 0 : Convert.ToDecimal(TxtImpuesto.Text);
+
+
             try
             {
                 using (var context = new FacturacionEntities())
@@ -87,16 +98,16 @@ namespace Sistema.Vista
                     context.ModificacionProd
                         (TxtCodigoProd.Text,
                         TxtNombre.Text,
-                        decimal.Parse(TxtPrecio1.Text),
-                        decimal.Parse(TxtPrecio2.Text),
-                        decimal.Parse(TxtPrecio3.Text),
+                        precio1,
+                        precio2,
+                        precio3,
                         chkEstado.Checked,
                         int.Parse(TxtExistencia.Text),
                         (int) CbCategoria.SelectedValue,
                         TxtUnidad.Text,
                         int.Parse(TxtCantMin.Text),
-                        decimal.Parse(TxtImpuesto.Text),
-                        decimal.Parse(TxtCosto.Text),
+                        impuesto,
+                        costo,
                         TxtNota.Text);
                      context.SaveChanges();
                     MessageBox.Show("Registro Modificado Satisfactoriamente");
@@ -114,21 +125,29 @@ namespace Sistema.Vista
             try
             {
                 using (var context = new FacturacionEntities())
-                { 
-                       var Prod = context.InsercionProd
-                        (TxtCodigoProd.Text,
-                        TxtNombre.Text,
-                        decimal.Parse(TxtPrecio1.Text),
-                        decimal.Parse(TxtPrecio2.Text),
-                        decimal.Parse(TxtPrecio3.Text),
-                        chkEstado.Checked,
-                        int.Parse(TxtExistencia.Text),
-                        (int) CbCategoria.SelectedValue,
-                        TxtUnidad.Text,
-                        int.Parse(TxtCantMin.Text),
-                        decimal.Parse(TxtImpuesto.Text),
-                        decimal.Parse(TxtCosto.Text),
-                        TxtNota.Text);
+                {
+                    decimal precio1, precio2, precio3, costo, impuesto;
+
+                  precio1 =  (TxtPrecio1.Text == "") ? 0 : Convert.ToDecimal(TxtPrecio1.Text);
+                  precio2 = (TxtPrecio2.Text == "") ? 0 : Convert.ToDecimal(TxtPrecio2.Text);
+                  precio3 = (TxtPrecio3.Text == "") ? 0 : Convert.ToDecimal(TxtPrecio3.Text);
+                  costo = (TxtCosto.Text == "") ? 0 : Convert.ToDecimal(TxtCosto.Text);
+                  impuesto = (TxtImpuesto.Text == "") ? 0 : Convert.ToDecimal(TxtImpuesto.Text);
+
+                    var Prod = context.InsercionProd
+                         (TxtCodigoProd.Text,
+                         TxtNombre.Text,
+                         precio1,
+                         precio2,
+                         precio3,
+                         chkEstado.Checked,
+                         int.Parse(TxtExistencia.Text),
+                         (int)CbCategoria.SelectedValue,
+                         TxtUnidad.Text,
+                         int.Parse(TxtCantMin.Text),
+                         impuesto,
+                         costo,
+                         TxtNota.Text);
                         context.SaveChanges();
                         this.TxtCodigo.Text = Prod.SingleOrDefault().Value.ToString();
                     MessageBox.Show("Registro Creado Satisfactoriamente");
@@ -249,7 +268,9 @@ namespace Sistema.Vista
         }
         private void TxtCodigoProd_Leave(object sender, EventArgs e)
         {
+            if (this.Modalidad == "VIEW") { 
             this.buscarProd(TxtCodigoProd.Text);
+            }
         }
 
         #endregion

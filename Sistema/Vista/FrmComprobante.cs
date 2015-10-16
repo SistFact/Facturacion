@@ -29,6 +29,7 @@ using Sistema.Data;namespace Sistema.Vista
             BindingSource Bs = new BindingSource();
             Bs.DataSource = context.comprobanteTipo.ToList();
             DGVComprobantes.DataSource = Bs;
+
             // Columna De Encabezado
             DGVComprobantes.Columns["inv_movencabezado"].Visible = false;
             DGVComprobantes.Columns["idNCF"].ReadOnly = true;

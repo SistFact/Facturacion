@@ -26,7 +26,7 @@ namespace Sistema.Data
         public Nullable<int> limite { get; set; }
         public Nullable<bool> factura { get; set; }
         public bool Cambio { get; set; }
-    
+
         public virtual ICollection<inv_movencabezado> inv_movencabezado { get; set; }
     }
 }

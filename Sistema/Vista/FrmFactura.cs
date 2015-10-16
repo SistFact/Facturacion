@@ -14,14 +14,14 @@ namespace Sistema.Vista
 {
     public partial class FrmFactura : Form
     {
-       Consulta.FrmConsultaProd Frm = new Consulta.FrmConsultaProd();
+        Consulta.FrmConsultaProd Frm = new Consulta.FrmConsultaProd();
         public FrmFactura()
         {
             InitializeComponent();
         }
-
+        
         #region Propierty
-        private void FrmFactura_Load(object sender, EventArgs e) 
+        private void FrmFactura_Load(object sender, EventArgs e)
         {
 
         }
@@ -49,21 +49,22 @@ namespace Sistema.Vista
 
         //private double _Prop_ITBIS;
         //private double _Prop_Total;
-        
+
         /// <summary>
         ///  Calculos totales fila
         /// </summary>
         /// 
-        private void calculo_fila() {
+        private void calculo_fila()
+        {
             // Impuesto sin importe
             this.Prop_ISI = Prop_Cant * double.Parse(Prop_PriceProducts1);
             // Impuesto
             this.Prop_ITBIS = Prop_ISI * Prop_ITBISTASA;
             // Total de impuesto sin importe + impuesto
-          //  if (Prop_ITBIS != 0)
+            //  if (Prop_ITBIS != 0)
             this.Prop_Total = Prop_ISI + Prop_ITBIS;
             // Total de Exento
-           
+
         }
 
         #endregion
@@ -79,15 +80,15 @@ namespace Sistema.Vista
                 this.TxtDescrip.Text = Prop_NameProducts;
                 this.TxtPrecio.Text = Prop_PriceProducts1;
             }
-           
+
         }
         private void TxtCod_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
         private void TxtCantidad_TextChanged(object sender, EventArgs e)
         {
-            Prop_Cant = int.Parse(TxtCantidad.Text);
+            Prop_Cant = (TxtCantidad.Text == "") ? 0 : int.Parse(TxtCantidad.Text);
         }
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
@@ -133,6 +134,8 @@ namespace Sistema.Vista
                 txtTotalExento.Text = Prop_TExento.ToString();
                 txtTotalItbis.Text = Prop_Titbis.ToString();
                 txtTotalPagar.Text = Prop_TPagar.ToString();
+
+                FrmPago.Total = Convert.ToDecimal(Prop_TPagar);
             }
             else
             {
@@ -150,61 +153,90 @@ namespace Sistema.Vista
 
         #region Metodos
         public void buscarProd(String id)
-          {
-              try
-              {
-                  using (var context = new FacturacionEntities())
-                  {
-                      var orecord = context.Producto
-                          .Where(b => b.CodigoProd == id)
-                          .FirstOrDefault();
+        {
+            try
+            {
+                using (var context = new FacturacionEntities())
+                {
+                    var orecord = context.Producto
+                        .Where(b => b.CodigoProd == id)
+                        .FirstOrDefault();
 
-                      if (orecord != null)
-                      {
-                          this.Prop_NameProducts = orecord.NombreProd.ToString();
-                          this.Prop_Unidad = orecord.UnidadProd.ToString();
-                          this.Prop_PriceProducts1 = orecord.Precio1.ToString();
-                          this.Prop_PriceProducts2 = orecord.Precio2.ToString();
-                          this.Prop_PriceProducts3 = orecord.Precio3.ToString();
-                          this.Prop_ITBISTASA = (double)orecord.Impuesto.Value;
-                         
-                          //this.TxtCodigo.Text = orecord.Codigo.ToString();
-                          //this.Prop_idProducts = orecord.CodigoProd.ToString();
-                          //this.CbCategoria.SelectedValue = orecord.CategoriaProd.ToString();
-                          //this.TxtCantMin.Text = orecord.CantidadMin.ToString();
-                          //this.TxtExistencia.Text = orecord.ExistenciaProd.ToString();
-                          //this.TxtCosto.Text = orecord.CostoProd.ToString();
-                          //this.TxtNota.Text = orecord.Nota.ToString();
-                          //this.chkEstado.Checked = (orecord.EstadoProd == true) ? true : false;
-                          //this.Encontrado = true;
-                          //btnBorrar.Enabled = chkEstado.Checked == true;
-                      }
-                      else
-                      {
-                          // this.Encontrado = false;
-                          MessageBox.Show("Id de Producto no existe.", "AVISO");
-                          using (var Method = new Formularios.FrmMantenimiento())
-                          {
-                              Method.CleanControls(groupBox1);
-                          }
-                      }
-                  }
-              }
-              catch (Exception ex)
-              {
-                  MessageBox.Show(ex.Message);
-              }
-          }
-        
+                    if (orecord != null)
+                    {
+                        this.Prop_NameProducts = orecord.NombreProd.ToString();
+                        this.Prop_Unidad = orecord.UnidadProd.ToString();
+                        this.Prop_PriceProducts1 = orecord.Precio1.ToString();
+                        this.Prop_PriceProducts2 = orecord.Precio2.ToString();
+                        this.Prop_PriceProducts3 = orecord.Precio3.ToString();
+                        this.Prop_ITBISTASA = (double)orecord.Impuesto.Value;
+
+                        //this.TxtCodigo.Text = orecord.Codigo.ToString();
+                        //this.Prop_idProducts = orecord.CodigoProd.ToString();
+                        //this.CbCategoria.SelectedValue = orecord.CategoriaProd.ToString();
+                        //this.TxtCantMin.Text = orecord.CantidadMin.ToString();
+                        //this.TxtExistencia.Text = orecord.ExistenciaProd.ToString();
+                        //this.TxtCosto.Text = orecord.CostoProd.ToString();
+                        //this.TxtNota.Text = orecord.Nota.ToString();
+                        //this.chkEstado.Checked = (orecord.EstadoProd == true) ? true : false;
+                        //this.Encontrado = true;
+                        //btnBorrar.Enabled = chkEstado.Checked == true;
+                    }
+                    else
+                    {
+                        // this.Encontrado = false;
+                        MessageBox.Show("Id de Producto no existe.", "AVISO");
+                        using (var Method = new Formularios.FrmMantenimiento())
+                        {
+                            Method.CleanControls(groupBox1);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         #endregion
 
         private void BtnPagar_Click(object sender, EventArgs e)
         {
-            FrmPago Frm = new FrmPago();
-            Frm.ShowDialog();
+            guardarDatos();   
         }
+        private void guardarDatos()
+        {
+            FrmPago FrmPago = new FrmPago();
+            //FrmPago.ShowDialog();
+            // Crear tabla para guardar los producto de la nueva factura
+            DataTable table = new DataTable();
+            // Columnas necesarias para el registros
+            table.Columns.Add("Codigo", typeof(String));
+            table.Columns.Add("Cantidad", typeof(String));
+            // Recorrido de toda las filas del DataGridview
+            foreach (DataGridViewRow row in DGVFact.Rows)
+            {
+                // La ultima fila siempre es nueva por lo tanto esta vacia.
+                // luego de recorrerla termina el ciclo
+                if (row.IsNewRow)
+                    break;
+                try
+                {
+                    // Agregar los registro a la Tabla
+                    table.Rows.Add(row.Cells["Codigo"].Value.ToString().Trim(), row.Cells["Cant"].Value.ToString().Trim());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(">" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            foreach (DataRow row in table.Rows)
+            {
+                // Prueba de que los registros a sido grabada a la nueva tabla
+                MessageBox.Show(row["Codigo"].ToString() + " " + row["Cantidad"].ToString());
+            }
 
-
-
+        }
     }
 }

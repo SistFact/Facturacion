@@ -96,7 +96,7 @@
           <Property Name="EstadoProd" Type="bit" Nullable="false" />
           <Property Name="ExistenciaProd" Type="int" />
           <Property Name="CodCategoria" Type="int" Nullable="false" />
-          <Property Name="UnidadProd" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="UnidadProd" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CantidadMin" Type="int" Nullable="false" />
           <Property Name="Impuesto" Type="decimal" Precision="5" Scale="4" />
           <Property Name="CostoProd" Type="money" />
@@ -404,7 +404,7 @@ warning 6002: The table/view 'Facturacion.dbo.ViewProduct' does not have a prima
           <Property Name="EstadoProd" Type="Boolean" Nullable="false" />
           <Property Name="ExistenciaProd" Type="Int32" />
           <Property Name="CodCategoria" Type="Int32" Nullable="false" />
-          <Property Name="UnidadProd" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UnidadProd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CantidadMin" Type="Int32" Nullable="false" />
           <Property Name="Impuesto" Type="Decimal" Precision="5" Scale="4" />
           <Property Name="CostoProd" Type="Decimal" Precision="19" Scale="4" />

@@ -84,9 +84,6 @@ namespace Sistema.Consulta
             this.DialogResult = DialogResult.OK;
             //MessageBox.Show(idProduct);
         }
-
-
-
         #endregion
         
 

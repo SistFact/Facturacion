@@ -131,9 +131,10 @@
             // 
             // BtnPagar
             // 
-            this.BtnPagar.Location = new System.Drawing.Point(21, 366);
+            this.BtnPagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPagar.Location = new System.Drawing.Point(21, 360);
             this.BtnPagar.Name = "BtnPagar";
-            this.BtnPagar.Size = new System.Drawing.Size(75, 23);
+            this.BtnPagar.Size = new System.Drawing.Size(138, 57);
             this.BtnPagar.TabIndex = 1;
             this.BtnPagar.Text = "Pagar";
             this.BtnPagar.UseVisualStyleBackColor = true;

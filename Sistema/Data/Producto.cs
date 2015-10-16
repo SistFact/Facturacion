@@ -32,9 +32,10 @@ namespace Sistema.Data
         public int CantidadMin { get; set; }
         public Nullable<decimal> Impuesto { get; set; }
         public Nullable<decimal> CostoProd { get; set; }
-        public string Nota { get; set; }
-    
+        public string Nota { get; set; }    
         public virtual CategoriaProd CategoriaProd { get; set; }
+        
         public virtual ICollection<inv_movdetalle> inv_movdetalle { get; set; }
+
     }
 }
